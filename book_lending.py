@@ -58,7 +58,7 @@ class Book:
     def overdue(cls):
         for book in cls.on_loan:
             if Book.current_due_date() < datetime.now():
-                cls.overdue.append(book)
+                cls.overdue_books.append(book)
 
 sister_outsider = Book.create("Sister Outsider", "Audre Lorde", "9781515905431")
 aint_i = Book.create("Ain't I a Woman?", "Bell Hooks", "9780896081307")
