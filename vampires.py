@@ -1,6 +1,7 @@
 class Vampires:
 
     coven = []
+    
 
     def __init__(self, name, age):
         self.name = name
@@ -25,11 +26,15 @@ class Vampires:
     
     @classmethod
     def sunrise(cls):
+        hitlist = []
         for vampire in cls.coven:
             starved = vampire.drank_blood_today is False
             sunburned = vampire.in_coffin is False
             if sunburned or starved:
-                cls.coven.remove(vampire)
+                hitlist.append(vampire)
+
+        for vampire in hitlist:
+            cls.coven.remove(vampire)
     
     @classmethod
     def sunset(cls):
@@ -57,12 +62,12 @@ print(Vampires.coven[0].drank_blood_today)
 Vampires.coven[0].go_home()
 print(Vampires.coven[0].in_coffin)
 
-Vampires.sunset()
-print("Verify Coven: after sunset")
-print(Vampires.coven)
+# Vampires.sunset()
+# print("Verify Coven: after sunset")
+# print(Vampires.coven)
 
 print("Verify Coven: Drank Blood and In Coffin values")
-print(Vampires.coven[0].drank_blood_today)
+print(cindy.drank_blood_today)
 print(Vampires.coven[0].in_coffin)
 print(Vampires.coven[1].drank_blood_today)
 print(Vampires.coven[1].in_coffin)
@@ -74,13 +79,3 @@ print(Vampires.coven[3].in_coffin)
 print("Verify Coven: after sunrise")
 Vampires.sunrise()
 print(Vampires.coven)
-print(Vampires.coven[0].drank_blood_today)
-print(Vampires.coven[0].in_coffin)
-print(Vampires.coven[1].drank_blood_today)
-print(Vampires.coven[1].in_coffin)
-print(cindy.drank_blood_today)
-print(cindy.in_coffin)
-print(liza.drank_blood_today)
-print(liza.in_coffin)
-
-# Weird thing happening where two of my vampires are disappearing 
